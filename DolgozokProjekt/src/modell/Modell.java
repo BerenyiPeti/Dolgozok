@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import view.Dolgozok;
 
 public class Modell {
 
@@ -24,7 +25,9 @@ public class Modell {
 
     public static void main(String[] args) throws IOException {
         new Modell().beolvas();
-
+        
+        new Dolgozok().setVisible(true);
+        
     }
 
     public void beolvas() throws IOException {
@@ -42,7 +45,6 @@ public class Modell {
          */
         for (String sor : sorok) {
             Ember ember = new Ember(sor, ";");
-            System.out.println(ember);
 
             if (ember.getNeme().equals("L")) {
                 lanyok.add(ember.getNev());
@@ -55,7 +57,6 @@ public class Modell {
             }
         }
 
-        getLegidosebbLany();
     }
 
     public List<String> getLanyok() {
@@ -66,14 +67,14 @@ public class Modell {
         return fiuk;
     }
 
-    public void getLegidosebbLany() {
+    public int getLegidosebbLanyKor() {
         int legtobb = 0;
         for (String i : lanyokKorai.keySet()) {
             if (lanyokKorai.get(i) > legtobb) {
                 legtobb = lanyokKorai.get(i);
             }
         }
-        System.out.println(legtobb);
+        return legtobb;
     }
 
 }
